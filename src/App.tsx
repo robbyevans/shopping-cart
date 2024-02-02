@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { Store } from "./pages/Store";
-import { Navbar } from "./components/Navbar";
-import { ShoppingCartProvider } from "./context/ShoppingCartContext";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import { Store } from "./modules/shoppingCart/slices/Store";
+import { Navbar } from "./modules/shoppingCart/view/components/Navbar";
+import { ShoppingCartProvider } from "./modules/shoppingCart/context/ShoppingCartContext";
+import Home from "./modules/shoppingCart/view/pages/Home";
+import About from "./modules/shoppingCart/view/pages/About";
 
 function App() {
   return (
