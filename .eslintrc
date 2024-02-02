@@ -1,0 +1,13 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "rules": {
+    // Additional custom rules here
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["../*"]
+      }
+    ]
+  }
+}
