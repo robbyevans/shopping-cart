@@ -1,8 +1,20 @@
-const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
-  currency: "USD",
-  style: "currency",
-})
+const formatterCache: { [key: string]: Intl.NumberFormat } = {};
 
-export function formatCurrency(number: number) {
-  return CURRENCY_FORMATTER.format(number)
-}
+export const formatCurrency = (
+  number: number,
+  locale: string = "en-US",
+  currency: string = "USD"
+): string => {
+  const cacheKey = `${locale}-${currency}`;
+  let formatter = formatterCache[cacheKey];
+
+  if (!formatter) {
+    formatter = new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency,
+    });
+    formatterCache[cacheKey] = formatter;
+  }
+
+  return formatter.format(number);
+};
