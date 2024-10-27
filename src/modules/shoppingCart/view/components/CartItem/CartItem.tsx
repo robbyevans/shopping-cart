@@ -15,7 +15,7 @@ export const CartItem: React.FC<CartItemProps> = ({ id, quantity }) => {
   if (!item) return null;
 
   return (
-    <S.CartItemContainer>
+    <S.CartItemContainer data-testid="cart-item">
       <S.ItemImage src={item.imgUrl} alt={item.name} />
       <S.ItemDetails>
         <S.ItemName>

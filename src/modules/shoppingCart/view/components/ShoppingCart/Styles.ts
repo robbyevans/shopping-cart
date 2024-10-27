@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface OffcanvasProps {
   $isOpen: boolean;
@@ -60,7 +61,26 @@ export const ItemsContainer = styled.div`
 `;
 
 export const Total = styled.div`
-  margin-left: auto;
+  margin-top: 1rem;
+  text-align: right;
   font-weight: bold;
   font-size: 1.25rem;
+`;
+
+export const CheckoutButton = styled(Link)`
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #198754;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #157347;
+  }
 `;
