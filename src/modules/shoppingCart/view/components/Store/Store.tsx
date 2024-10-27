@@ -1,5 +1,5 @@
 import React from "react";
-import { StoreItem } from "modules/shoppingCart/view/components/StoreItem/StoreItem";
+import { ProductCard } from "modules/shoppingCart/view/components/ProductCard/ProductCard";
 import storeItems from "modules/shoppingCart/data/items.json";
 import { Header } from "modules/shoppingCart/view/components/Header/Header";
 import * as S from "./Styles";
@@ -13,7 +13,7 @@ export const Store: React.FC = () => {
         <S.ItemsGrid>
           {storeItems.map((item) => (
             <S.ItemColumn key={item.id}>
-              <StoreItem {...item} />
+              <ProductCard {...item} />
             </S.ItemColumn>
           ))}
         </S.ItemsGrid>

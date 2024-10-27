@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { STATIC_COLORS } from "modules/shoppingCart/view/foundations";
 
 export const FooterContainer = styled.footer`
-  background-color: ${STATIC_COLORS.green["900"]};
+  background-color: ${STATIC_COLORS.base.primary};
   color: #fff;
   padding: 2rem 1rem 1rem;
 `;

@@ -21,7 +21,7 @@ export const OffcanvasContainer = styled.div<OffcanvasProps>`
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px; /* Adjust as needed */
+  width: 100%;
   height: 100%;
   background-color: #fff;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
@@ -52,7 +52,7 @@ export const CloseButton = styled.button`
 export const OffcanvasBody = styled.div`
   padding: 1rem;
   overflow-y: auto;
-  height: calc(100% - 56px); /* Adjust based on header height */
+  height: calc(100% - 56px);
 `;
 
 export const ItemsContainer = styled.div`
@@ -69,13 +69,11 @@ export const Total = styled.div`
 `;
 
 export const CheckoutButton = styled(Link)`
-  background-color: ${STATIC_COLORS.primary["900"]};
-  color: ${STATIC_COLORS.neutral.white};
+  background-color: ${STATIC_COLORS.base.primary};
+  color: ${STATIC_COLORS.base.white};
   display: block;
   width: 100%;
   padding: 0.75rem;
-  /* background-color: #198754; */
-  /* color: #fff; */
   text-decoration: none;
   text-align: center;
   border-radius: 0.25rem;
@@ -84,6 +82,6 @@ export const CheckoutButton = styled(Link)`
   font-size: 1rem;
 
   &:hover {
-    background-color: ${STATIC_COLORS.primary["800"]}; // Hover color
+    color: ${STATIC_COLORS.base.secondary};
   }
 `;

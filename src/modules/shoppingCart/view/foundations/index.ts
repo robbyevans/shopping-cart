@@ -3,42 +3,13 @@
 import { IStaticColors, IStaticGradients, IStaticShadows } from "./types"; // Adjust the path as needed
 
 export const STATIC_COLORS: IStaticColors = {
-  // Define your color palettes
-  green: {
-    "25": "#F2F9F5",
-    "50": "#D3EDDF",
-    "100": "#B0DEC6",
-    "200": "#8DCFAD",
-    "300": "#6AC093",
-    "400": "#47B17A",
-    "500": "#24A360",
-    "600": "#1E8851",
-    "700": "#186F41",
-    "800": "#135432",
-    "900": "#0D3B23",
-  },
-  // ... other colors
-
-  primary: {
-    "900": "#0D3B23", // Primary green
-    "800": "#16623B", // Hover color
-    // Add more shades if needed
-  },
-  secondary: {
-    "500": "#DAA520", // Gold
-    // Add more shades if needed
-  },
-  neutral: {
-    white: "#FFFFFF",
-    black: "#000000",
-    // Other neutrals
-  },
-
   // Base colors
   base: {
     black: "#232021",
     white: "#ffffff",
     primary: "#0D3B23",
+    primaryHover: "#16623B",
+    secondary: "#DAA520",
     whiteGray: "#efefef",
     red: "#f04438",
     lightRed: "#fda29b",

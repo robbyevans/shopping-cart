@@ -33,15 +33,14 @@ export const NavLinkItem = styled(NavLink)`
     font-weight: bold;
     border-bottom: 2px solid ${STATIC_COLORS.base.primary};
   }
-
   &:hover {
-    text-decoration: underline;
+    color: ${STATIC_COLORS.base.primaryHover};
   }
 `;
 
 export const CartButton = styled.button`
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   position: relative;
   background: none;
   border: 1px solid ${STATIC_COLORS.base.primary};
@@ -51,15 +50,17 @@ export const CartButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
-  &:hover {
-    background-color: rgba(13, 110, 253, 0.1);
-  }
 `;
 
 export const CartIcon = styled.svg`
   width: 1.5rem;
   height: 1.5rem;
+  border: 1px solid red;
+  color: red;
+  fill: red;
+  path {
+    fill: blue;
+  }
 `;
 
 export const CartBadge = styled.div`
