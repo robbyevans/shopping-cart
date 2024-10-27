@@ -58,13 +58,7 @@ export const BillingSection = styled.div`
 `;
 
 export const Divider = styled.div`
-  width: 1px;
-  background-color: grey;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 1px;
-  }
+  border: 0.5px solid grey;
 `;
 
 export const SectionTitle = styled.h2`
