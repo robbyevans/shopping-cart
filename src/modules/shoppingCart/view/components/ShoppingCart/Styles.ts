@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { STATIC_COLORS } from "modules/shoppingCart/view/foundations";
 
 interface OffcanvasProps {
   $isOpen: boolean;
@@ -68,11 +69,13 @@ export const Total = styled.div`
 `;
 
 export const CheckoutButton = styled(Link)`
+  background-color: ${STATIC_COLORS.primary["900"]};
+  color: ${STATIC_COLORS.neutral.white};
   display: block;
   width: 100%;
   padding: 0.75rem;
-  background-color: #198754;
-  color: #fff;
+  /* background-color: #198754; */
+  /* color: #fff; */
   text-decoration: none;
   text-align: center;
   border-radius: 0.25rem;
@@ -81,6 +84,6 @@ export const CheckoutButton = styled(Link)`
   font-size: 1rem;
 
   &:hover {
-    background-color: #157347;
+    background-color: ${STATIC_COLORS.primary["800"]}; // Hover color
   }
 `;

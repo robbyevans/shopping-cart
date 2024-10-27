@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { STATIC_COLORS } from "modules/shoppingCart/view/foundations";
 
 export const CheckoutContainer = styled.div`
   padding: 2rem;
@@ -9,7 +10,7 @@ export const CheckoutContainer = styled.div`
 export const BackButton = styled.button`
   background: none;
   border: none;
-  color: #0d6efd;
+  color: ${STATIC_COLORS.base.primary};
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: 1rem;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { STATIC_COLORS } from "modules/shoppingCart/view/foundations";
 
 export const NavbarContainer = styled.nav`
   position: sticky;
@@ -30,7 +31,7 @@ export const NavLinkItem = styled(NavLink)`
 
   &.active {
     font-weight: bold;
-    border-bottom: 2px solid #0d6efd;
+    border-bottom: 2px solid ${STATIC_COLORS.base.primary};
   }
 
   &:hover {
@@ -43,9 +44,9 @@ export const CartButton = styled.button`
   height: 3rem;
   position: relative;
   background: none;
-  border: 1px solid #0d6efd;
+  border: 1px solid ${STATIC_COLORS.base.primary};
   border-radius: 50%;
-  color: #0d6efd;
+  color: ${STATIC_COLORS.base.primary};
   display: flex;
   align-items: center;
   justify-content: center;

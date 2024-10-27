@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { STATIC_COLORS } from "../../foundations";
 
 export const Card = styled.div`
   height: 100%;
@@ -47,7 +48,7 @@ export const CardFooter = styled.div`
 export const AddToCartButton = styled.button`
   width: 100%;
   padding: 0.5rem;
-  background-color: #0d6efd;
+  background-color: ${STATIC_COLORS.base.primary};
   color: #fff;
   border: none;
   border-radius: 0.25rem;
@@ -75,7 +76,7 @@ export const QuantityControlButtons = styled.div`
 
 export const QuantityButton = styled.button`
   padding: 0.25rem 0.75rem;
-  background-color: #0d6efd;
+  background-color: ${STATIC_COLORS.base.primary};
   color: #fff;
   border: none;
   border-radius: 0.25rem;
