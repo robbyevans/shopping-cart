@@ -44,16 +44,14 @@ export const STATIC_SHADOWS: IStaticShadows = {
 
 // Screen sizes for media queries
 export const SCREEN_SIZE = {
-  desktopKiosk: "1080px",
-  desktopKioskLarge: "1920px",
+  desktop: "1080px",
   medium: "768px",
   mobileSmall: "420px",
   vhApp: "500px",
 };
 
 export const deviceSize = {
-  desktopKioskLarge: `(max-width: ${SCREEN_SIZE.desktopKioskLarge})`,
-  lg: `(max-width: ${SCREEN_SIZE.desktopKiosk})`,
+  lg: `(max-width: ${SCREEN_SIZE.desktop})`,
   md: `(max-width: ${SCREEN_SIZE.medium})`,
   mobileSmall: `(max-width: ${SCREEN_SIZE.mobileSmall})`,
   vhApp: `(max-width: ${SCREEN_SIZE.vhApp})`,

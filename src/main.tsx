@@ -1,13 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ShoppingCartProvider } from "modules/shoppingCart/context/ShoppingCartContext";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Router>
+      <ShoppingCartProvider>
+        <App />
+      </ShoppingCartProvider>
+    </Router>
   </React.StrictMode>
 );

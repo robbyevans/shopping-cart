@@ -5,14 +5,15 @@ import { CartItem } from "modules/shoppingCart/view/components/CartItem/CartItem
 import storeItems from "modules/shoppingCart/data/items.json";
 import * as S from "./Styles";
 
-// Remove the import of 'Link' as it's not used directly here
-// import { Link } from 'react-router-dom';
-
 type ShoppingCartProps = {
   isOpen: boolean;
+  isHideCheckoutButton?: boolean;
 };
 
-export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen }) => {
+export const ShoppingCart: React.FC<ShoppingCartProps> = ({
+  isOpen,
+  isHideCheckoutButton = false,
+}) => {
   const { closeCart, cartItems } = useShoppingCart();
 
   const totalPrice = cartItems.reduce((total, cartItem) => {
@@ -34,9 +35,11 @@ export const ShoppingCart: React.FC<ShoppingCartProps> = ({ isOpen }) => {
               <CartItem key={item.id} {...item} />
             ))}
             <S.Total>Total: {formatCurrency(totalPrice)}</S.Total>
-            <S.CheckoutButton to="/checkout" onClick={closeCart}>
-              Checkout
-            </S.CheckoutButton>
+            {!isHideCheckoutButton && (
+              <S.CheckoutButton to="/checkout" onClick={closeCart}>
+                Checkout
+              </S.CheckoutButton>
+            )}
           </S.ItemsContainer>
         </S.OffcanvasBody>
       </S.OffcanvasContainer>

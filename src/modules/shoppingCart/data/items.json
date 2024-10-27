@@ -1,28 +1,28 @@
 [
   {
     "id": 1,
-    "name": "Book",
+    "name": "Book, Tom and Jerry Christmass night",
     "price": 10.99,
     "imgUrl": "/images/book.jpg",
     "description": "An enthralling fantasy novel that transports you to a world of magic and adventure."
   },
   {
     "id": 2,
-    "name": "Computer",
+    "name": "Computer Dell Xps 3350",
     "price": 1199,
     "imgUrl": "/images/computer.jpg",
     "description": "A high-performance laptop with the latest Intel processor, perfect for gaming and professional work."
   },
   {
     "id": 3,
-    "name": "Banana",
+    "name": "Yellow Banana from Kisii",
     "price": 1.05,
     "imgUrl": "/images/banana.jpg",
     "description": "Fresh, organic bananas packed with nutrients—great for a healthy snack."
   },
   {
     "id": 4,
-    "name": "Car",
+    "name": "Car, Volkswagen beetle 1967 annivassary edition",
     "price": 14000,
     "imgUrl": "/images/car.jpg",
     "description": "A reliable sedan with excellent fuel efficiency and modern features."

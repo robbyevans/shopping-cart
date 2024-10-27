@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { deviceSize } from "modules/shoppingCart/view/foundations";
 export const CartItemContainer = styled.div`
   display: flex;
   align-items: center;
@@ -7,9 +7,13 @@ export const CartItemContainer = styled.div`
 `;
 
 export const ItemImage = styled.img`
-  width: 125px;
+  min-width: 85px;
   height: 75px;
   object-fit: cover;
+
+  @media screen and (${deviceSize.mobileSmall}) {
+    width: 90px;
+  }
 `;
 
 export const ItemDetails = styled.div`
@@ -41,4 +45,16 @@ export const RemoveButton = styled.button`
   color: #dc3545;
   font-size: 1.25rem;
   cursor: pointer;
+
+  @media screen and (${deviceSize.mobileSmall}) {
+    margin-left: 5px;
+  }
+`;
+export const ItemContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+  flex: 1;
 `;

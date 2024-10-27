@@ -32,6 +32,9 @@ export const CheckoutContent = styled.div`
 `;
 
 export const CartSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   flex: 0 0 30%;
   max-width: 30%;
 

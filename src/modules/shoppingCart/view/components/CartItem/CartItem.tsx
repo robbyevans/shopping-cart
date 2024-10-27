@@ -17,17 +17,19 @@ export const CartItem: React.FC<CartItemProps> = ({ id, quantity }) => {
   return (
     <S.CartItemContainer data-testid="cart-item">
       <S.ItemImage src={item.imgUrl} alt={item.name} />
-      <S.ItemDetails>
-        <S.ItemName>
-          {item.name}{" "}
-          {quantity > 1 && <S.ItemQuantity>x{quantity}</S.ItemQuantity>}
-        </S.ItemName>
-        <S.ItemPrice>{formatCurrency(item.price)}</S.ItemPrice>
-      </S.ItemDetails>
-      <S.TotalPrice>{formatCurrency(item.price * quantity)}</S.TotalPrice>
-      <S.RemoveButton onClick={() => removeFromCart(item.id)}>
-        &times;
-      </S.RemoveButton>
+      <S.ItemContentWrapper>
+        <S.ItemDetails>
+          <S.ItemName>
+            {item.name}{" "}
+            {quantity > 1 && <S.ItemQuantity>x{quantity}</S.ItemQuantity>}
+          </S.ItemName>
+          <S.ItemPrice>{formatCurrency(item.price)}</S.ItemPrice>
+        </S.ItemDetails>
+        <S.TotalPrice>{formatCurrency(item.price * quantity)}</S.TotalPrice>
+        <S.RemoveButton onClick={() => removeFromCart(item.id)}>
+          &times;
+        </S.RemoveButton>
+      </S.ItemContentWrapper>
     </S.CartItemContainer>
   );
 };

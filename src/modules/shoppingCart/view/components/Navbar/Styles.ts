@@ -52,17 +52,6 @@ export const CartButton = styled.button`
   cursor: pointer;
 `;
 
-export const CartIcon = styled.svg`
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 1px solid red;
-  color: red;
-  fill: red;
-  path {
-    fill: blue;
-  }
-`;
-
 export const CartBadge = styled.div`
   position: absolute;
   bottom: 0;

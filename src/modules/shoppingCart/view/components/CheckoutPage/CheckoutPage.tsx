@@ -5,7 +5,6 @@ import storeItems from "modules/shoppingCart/data/items.json";
 import { formatCurrency } from "modules/shoppingCart/utilities/FormatCurrency";
 import * as S from "./Styles";
 import { useNavigate } from "react-router-dom";
-
 export const CheckoutPage: React.FC = () => {
   const { cartItems } = useShoppingCart();
   const navigate = useNavigate();
