@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { STATIC_COLORS } from "modules/shoppingCart/view/foundations";
+import {
+  STATIC_COLORS,
+  deviceSize,
+} from "modules/shoppingCart/view/foundations";
 
 export const CheckoutContainer = styled.div`
   padding: 2rem;
@@ -26,7 +29,7 @@ export const CheckoutContent = styled.div`
   gap: 2rem;
 
   /* Responsive adjustments */
-  @media (max-width: 768px) {
+  @media (${deviceSize.md}) {
     flex-direction: column;
   }
 `;

@@ -72,7 +72,6 @@ export const CheckoutButton = styled(Link)`
   background-color: ${STATIC_COLORS.base.primary};
   color: ${STATIC_COLORS.base.white};
   display: block;
-  width: 100%;
   padding: 0.75rem;
   text-decoration: none;
   text-align: center;

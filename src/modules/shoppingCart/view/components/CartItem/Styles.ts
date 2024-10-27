@@ -7,7 +7,7 @@ export const CartItemContainer = styled.div`
 `;
 
 export const ItemImage = styled.img`
-  min-width: 85px;
+  width: 120px;
   height: 75px;
   object-fit: cover;
 
