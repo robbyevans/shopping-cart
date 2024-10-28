@@ -1,44 +1,34 @@
+// MpesaPayment.tsx
+
 import React, { useState } from "react";
 import * as S from "./Styles";
 
 interface MpesaPaymentProps {
   amount: number;
-  onPaymentSuccess: () => void;
-  onPaymentFailure: () => void;
+  onSubmit: (info: MpesaPaymentInfo) => void;
+}
+
+interface MpesaPaymentInfo {
+  phoneNumber: string;
 }
 
 export const MpesaPayment: React.FC<MpesaPaymentProps> = ({
   amount,
-  onPaymentSuccess,
-  onPaymentFailure,
+  onSubmit,
 }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
-  const handleMpesaPayment = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Placeholder for actual Mpesa payment processing logic
-      // Replace this with integration to Mpesa API
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-
-      // Simulate payment success
-      const paymentSuccess = true; // Change based on actual response
-
-      if (paymentSuccess) {
-        onPaymentSuccess();
-      } else {
-        throw new Error("Mpesa payment failed.");
-      }
-    } catch (err: any) {
-      console.log("err", err);
-      setError(err.message || "An unexpected error occurred.");
-      onPaymentFailure();
-    } finally {
-      setLoading(false);
+  const handleSubmit = () => {
+    const phoneRegex = /^2547\d{8}$/; // Kenyan phone number format
+    if (!phoneRegex.test(phoneNumber)) {
+      setValidationError(
+        "Please enter a valid Kenyan phone number (2547XXXXXXXX)."
+      );
+      return;
     }
+    setValidationError(null);
+    onSubmit({ phoneNumber });
   };
 
   return (
@@ -50,12 +40,12 @@ export const MpesaPayment: React.FC<MpesaPaymentProps> = ({
           type="tel"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="07XXXXXXXX"
+          placeholder="2547XXXXXXXX"
         />
       </S.FormGroup>
-      {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
-      <S.PayButton onClick={handleMpesaPayment} disabled={loading}>
-        {loading ? "Processing..." : `Pay ${formatCurrency(amount)} via Mpesa`}
+      {validationError && <S.ErrorMessage>{validationError}</S.ErrorMessage>}
+      <S.PayButton onClick={handleSubmit}>
+        Pay {formatCurrency(amount)} via Mpesa
       </S.PayButton>
     </S.MpesaPaymentContainer>
   );
@@ -65,6 +55,6 @@ export const MpesaPayment: React.FC<MpesaPaymentProps> = ({
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "KES",
   }).format(amount);
 };

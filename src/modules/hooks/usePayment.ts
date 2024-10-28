@@ -1,6 +1,7 @@
-// src/modules/shoppingCart/hooks/usePayment.ts
+// src/modules/hooks/usePayment.ts
 
 import { useState } from "react";
+import axios from "axios";
 
 // Define the types of payment methods
 type PaymentMethod = "card" | "mpesa";
@@ -48,25 +49,41 @@ export const usePayment = (): UsePaymentReturn => {
 
     try {
       if (method === "card") {
-        // Extract card info
-        const { cardNumber, expiry, cvc } = info as CardPaymentInfo;
-        // Implement card payment logic here
-        // For example, call the CardPayment component's payment handler
-        // Here, we'll simulate the payment process
-        await simulateCardPayment(cardNumber, expiry, cvc, amount);
+        // Implement actual card payment logic here
+        // For example, integrate with Stripe or another payment gateway
+        // For demonstration, we'll simulate the payment process
+        await simulateCardPayment(info as CardPaymentInfo, amount);
       } else if (method === "mpesa") {
-        // Extract Mpesa info
+        // Implement Mpesa payment logic by calling the backend
         const { phoneNumber } = info as MpesaPaymentInfo;
-        // Implement Mpesa payment logic here
-        // For example, call the MpesaPayment component's payment handler
-        // Here, we'll simulate the payment process
-        await simulateMpesaPayment(phoneNumber, amount);
+
+        const response = await axios.post("http://localhost:5000/stkpush", {
+          phoneNumber,
+          amount,
+          accountReference: "Order123", // Replace with actual account reference
+          transactionDesc: "Payment for Order123", // Replace with actual description
+        });
+
+        // Corrected ResponseCode comparison
+        if (response.data.ResponseCode !== "0") {
+          throw new Error(
+            response.data.errorMessage || "Mpesa payment failed."
+          );
+        }
+
+        // Note: Actual payment confirmation comes via webhook.
+        // Here, we're assuming success based on ResponseCode.
+        setIsPaymentSuccess(true);
       }
 
       // If payment is successful
       setIsPaymentSuccess(true);
-    } catch (err: any) {
-      setError(err.message || "Payment failed.");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
       setIsPaymentSuccess(false);
     } finally {
       setIsLoading(false);
@@ -81,40 +98,20 @@ export const usePayment = (): UsePaymentReturn => {
   };
 };
 
-// Simulate Card Payment API call
+// Simulate Card Payment API call (Replace with actual integration)
 const simulateCardPayment = (
-  cardNumber: string,
-  expiry: string,
-  cvc: string,
+  cardInfo: CardPaymentInfo,
   amount: number
 ): Promise<void> => {
   return new Promise((resolve, reject) => {
     // Simulate API delay
     setTimeout(() => {
       // Simple validation simulation
+      const { cardNumber, expiry, cvc } = cardInfo;
       if (cardNumber && expiry && cvc && amount > 0) {
         resolve();
       } else {
         reject(new Error("Invalid card details or amount."));
-      }
-    }, 2000);
-  });
-};
-
-// Simulate Mpesa Payment API call
-const simulateMpesaPayment = (
-  phoneNumber: string,
-  amount: number
-): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    // Simulate API delay
-    setTimeout(() => {
-      // Simple validation simulation
-      const phoneRegex = /^07\d{8}$/;
-      if (phoneRegex.test(phoneNumber) && amount > 0) {
-        resolve();
-      } else {
-        reject(new Error("Invalid phone number or amount."));
       }
     }, 2000);
   });

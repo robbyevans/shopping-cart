@@ -1,6 +1,6 @@
-// src/modules/shoppingCart/view/pages/CheckoutPage/CheckoutPage.tsx
+// CheckoutPage.tsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useShoppingCart } from "modules/context/ShoppingCartContext";
 import { CartItem } from "modules/view/components/CartItem/CartItem";
 import storeItems from "modules/data/items.json";
@@ -40,6 +40,15 @@ export const CheckoutPage: React.FC = () => {
   const handlePayment = async (method: "card" | "mpesa", info: any) => {
     await triggerPayment(method, info, totalPrice);
   };
+
+  // Monitor payment success state
+  useEffect(() => {
+    if (isPaymentSuccess) {
+      handlePaymentSuccess();
+    } else if (isPaymentSuccess === false) {
+      handlePaymentFailure();
+    }
+  }, [isPaymentSuccess]);
 
   return (
     <S.CheckoutContainer data-testid="CheckoutPage">
@@ -91,15 +100,13 @@ export const CheckoutPage: React.FC = () => {
           {selectedPaymentMethod === "card" && (
             <CardPayment
               amount={totalPrice}
-              onPaymentSuccess={handlePaymentSuccess}
-              onPaymentFailure={handlePaymentFailure}
+              onSubmit={(info) => handlePayment("card", info)}
             />
           )}
           {selectedPaymentMethod === "mpesa" && (
             <MpesaPayment
               amount={totalPrice}
-              onPaymentSuccess={handlePaymentSuccess}
-              onPaymentFailure={handlePaymentFailure}
+              onSubmit={(info) => handlePayment("mpesa", info)}
             />
           )}
 
@@ -108,9 +115,7 @@ export const CheckoutPage: React.FC = () => {
             <S.StatusMessage>Processing Payment...</S.StatusMessage>
           )}
           {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
-          {isPaymentSuccess && (
-            <S.SuccessMessage>Payment was successful!</S.SuccessMessage>
-          )}
+          {/* Removed isPaymentSuccess display as it's handled by useEffect */}
         </S.BillingSection>
       </S.CheckoutContent>
     </S.CheckoutContainer>

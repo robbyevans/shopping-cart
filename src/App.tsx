@@ -6,6 +6,7 @@ import { Navbar } from "modules/view/components/Navbar/Navbar";
 import { Footer } from "modules/view/components/Footer/Footer";
 import CheckoutPage from "modules/view/components/CheckoutPage/CheckoutPage";
 import * as S from "./App-styles";
+import ConfirmationPage from "modules/view/pages/ConfirmationPage/ConfirmationPage";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Catalog />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/confirmation" element={<ConfirmationPage />} />
         </Routes>
       </S.ContentWrapper>
       <Footer />

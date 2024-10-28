@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Book, Tom and Jerry Christmass night",
-    "price": 10.99,
+    "price": 10,
     "imgUrl": "/images/book.jpg",
     "description": "An enthralling fantasy novel that transports you to a world of magic and adventure."
   },
@@ -16,7 +16,7 @@
   {
     "id": 3,
     "name": "Yellow Banana from Kisii",
-    "price": 1.05,
+    "price": 1,
     "imgUrl": "/images/banana.jpg",
     "description": "Fresh, organic bananas packed with nutrients—great for a healthy snack."
   },
@@ -30,28 +30,28 @@
   {
     "id": 5,
     "name": "Headphones",
-    "price": 199.99,
+    "price": 199,
     "imgUrl": "/images/headphones.jpg",
     "description": "Wireless noise-canceling headphones with superior sound quality and comfort."
   },
   {
     "id": 6,
     "name": "Coffee Maker",
-    "price": 89.99,
+    "price": 89,
     "imgUrl": "/images/coffeemaker.jpg",
     "description": "Brew the perfect cup every time with this state-of-the-art coffee maker."
   },
   {
     "id": 7,
     "name": "Smartphone",
-    "price": 699.99,
+    "price": 699,
     "imgUrl": "/images/smartphone.jpg",
     "description": "A sleek smartphone with a stunning display and cutting-edge camera technology."
   },
   {
     "id": 8,
     "name": "Running Shoes",
-    "price": 120.0,
+    "price": 120,
     "imgUrl": "/images/runningshoes.jpg",
     "description": "Lightweight and comfortable running shoes designed for optimal performance."
   }

@@ -1,46 +1,36 @@
+// CardPayment.tsx
+
 import React, { useState } from "react";
 import * as S from "./Styles";
 
 interface CardPaymentProps {
   amount: number;
-  onPaymentSuccess: () => void;
-  onPaymentFailure: () => void;
+  onSubmit: (info: CardPaymentInfo) => void;
+}
+
+interface CardPaymentInfo {
+  cardNumber: string;
+  expiry: string;
+  cvc: string;
 }
 
 export const CardPayment: React.FC<CardPaymentProps> = ({
   amount,
-  onPaymentSuccess,
-  onPaymentFailure,
+  onSubmit,
 }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
-  const handleCardPayment = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Placeholder for actual card payment processing logic
-      // Replace this with integration to your payment gateway (e.g., Stripe)
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-
-      // Simulate payment success
-      const paymentSuccess = true; // Change based on actual response
-
-      if (paymentSuccess) {
-        onPaymentSuccess();
-      } else {
-        throw new Error("Card payment failed.");
-      }
-    } catch (err: any) {
-      console.log("err", err);
-      setError(err.message || "An unexpected error occurred.");
-      onPaymentFailure();
-    } finally {
-      setLoading(false);
+  const handleSubmit = () => {
+    // Basic validation
+    if (!cardNumber || !expiry || !cvc) {
+      setValidationError("Please fill in all card details.");
+      return;
     }
+    setValidationError(null);
+    onSubmit({ cardNumber, expiry, cvc });
   };
 
   return (
@@ -75,9 +65,9 @@ export const CardPayment: React.FC<CardPaymentProps> = ({
           placeholder="123"
         />
       </S.FormGroup>
-      {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
-      <S.PayButton onClick={handleCardPayment} disabled={loading}>
-        {loading ? "Processing..." : `Pay ${formatCurrency(amount)}`}
+      {validationError && <S.ErrorMessage>{validationError}</S.ErrorMessage>}
+      <S.PayButton onClick={handleSubmit}>
+        Pay {formatCurrency(amount)}
       </S.PayButton>
     </S.CardPaymentContainer>
   );
@@ -87,6 +77,6 @@ export const CardPayment: React.FC<CardPaymentProps> = ({
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "KES",
   }).format(amount);
 };
